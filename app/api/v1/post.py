@@ -1,4 +1,3 @@
-from ast import If
 from typing import List
 
 from fastapi import APIRouter, Depends, HTTPException, Request

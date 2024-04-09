@@ -1,5 +1,3 @@
-from typing import Union
-from uuid import UUID
 from pydantic import EmailStr
 
 from fastapi import HTTPException
