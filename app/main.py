@@ -3,6 +3,11 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.core.config import settings
 from app.api.v1 import api_router
+from app.db.database import engine
+from app.db import models
+
+
+models.Base.metadata.create_all(bind=engine)
 
 
 def get_application():

@@ -3,9 +3,7 @@ from uuid import UUID
 from pydantic import EmailStr
 
 from fastapi import HTTPException
-from sqlalchemy import and_, func, distinct, case, extract
 from sqlalchemy.orm import Session
-from datetime import datetime
 
 from app.db import models
 from app.crud.schemas import UserCreate
@@ -16,6 +14,17 @@ def get_user_by_email(db: Session, email: EmailStr):
     try:
         conn = db
         result = conn.query(models.User).filter(models.User.email == email).first()
+        user = result if result else None
+
+        return user
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"DataBase Error: {str(e)}")
+
+
+def get_user_by_id(db: Session, id: int):
+    try:
+        conn = db
+        result = conn.query(models.User).filter(models.User.id == id).first()
         user = result if result else None
 
         return user

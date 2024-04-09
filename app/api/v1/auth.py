@@ -8,11 +8,8 @@ from app.internal.dependencies import get_db
 from app.internal.auth import authenticate, create_access_token
 from app.crud.schemas import UserCreate, Token
 from app.crud import auth
-from app.db.database import engine
-from app.db import models
 
 
-models.Base.metadata.create_all(bind=engine)
 router = APIRouter()
 
 

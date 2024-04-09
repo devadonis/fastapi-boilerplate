@@ -1,11 +1,9 @@
 from typing import Optional
-from pydantic import BaseModel, EmailStr, constr
+from pydantic import BaseModel, EmailStr
 
 
 class PostBase(BaseModel):
-    text: constr(
-        max_length=1000
-    )  # 1MB text limit could be enforced here based on character count
+    text: str
 
 
 class PostCreate(PostBase):
